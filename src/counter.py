@@ -18,8 +18,7 @@ COUNTERS = {}
 @app.route('/counters/<name>', methods=['POST'])
 def create_counter(name):
     """Create a counter"""
-    app.logger.info(f"Request to create counter: {name}")
-    global COUNTERS
+    app.logger.info("Request to create counter: %s", name)
     if name in COUNTERS:
         return {"Message": f"Counter {name} already exists"}, status.HTTP_409_CONFLICT
     COUNTERS[name] = 0
