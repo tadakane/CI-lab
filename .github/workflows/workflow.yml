@@ -34,6 +34,10 @@ jobs:
       - name: Run unit tests with nose
         run: nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
 
+      - name: Code Quality Analysis with pylint
+        run: |
+          pylint src
+
       - name: Check for Python package vulnerabilities
         run: |
           pip install safety

@@ -1,3 +1,5 @@
+""" Counters and routing counters including CRUD """
+
 from flask import Flask
 
 # we need to import the file that contains the status codes
@@ -33,6 +35,7 @@ def update_counter(name):
 
 @app.route('/counters/<name>', methods=['GET'])
 def read_counter(name):
+    """ Read a counter"""
     if name in COUNTERS:
         return {name: COUNTERS[name]}, status.HTTP_200_OK
     return {"Message": f"Counter {name} doesn't exist"}, status.HTTP_404_NOT_FOUND
@@ -40,6 +43,7 @@ def read_counter(name):
 
 @app.route('/counters/<name>', methods=['DELETE'])
 def delete_counter(name):
+    """ Delete a counter"""
     if name not in COUNTERS:
         return {"Message": f"Counter {name} doesn't exist"}, status.HTTP_404_NOT_FOUND
     del COUNTERS[name]
