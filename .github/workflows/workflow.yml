@@ -36,6 +36,7 @@ jobs:
 
       - name: Code Quality Analysis with pylint
         run: |
+          pip install pylint
           pylint src
 
       - name: Check for Python package vulnerabilities
